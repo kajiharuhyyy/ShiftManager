@@ -31,13 +31,13 @@ public class Shift {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(nullable = false)
+	@Column(name = "work_date", nullable = false)
 	private LocalDate workDate;
 	
-	@Column(nullable = false)
+	@Column(name = "start_time", nullable = false)
 	private LocalDate startTime;
 	
-	@Column(nullable = false)
+	@Column(name = "end_time", nullable = false)
 	private LocalDate endTime;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
