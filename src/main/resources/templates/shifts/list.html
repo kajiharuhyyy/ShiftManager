@@ -15,10 +15,16 @@
 
     <div class="d-flex justify-content-between align-items-center mb-3">
         <h1 class="h3 mb-0">シフト一覧</h1>
-		<a class="btn btn-outline-secondary btn-sm" th:href="@{/members}">
-			メンバー管理画面へ</a>
-        <a class="btn btn-primary" th:href="@{/shifts/new}">＋ 新規シフト</a>
+        <div class="d-flex gap-2">
+            <a class="btn btn-outline-secondary btn-sm" th:href="@{/members}">
+                メンバー管理画面へ
+            </a>
+            <a class="btn btn-primary" th:href="@{/shifts/new}">
+                ＋ 新規シフト
+            </a>
+        </div>
     </div>
+
 
     <div class="card shadow-sm">
         <div class="card-body p-0">
@@ -44,11 +50,15 @@
 
                 <tr th:each="shift : ${shifts}">
                     <td th:text="${shift.id}"></td>
-                    <td th:text="${shift.workDate}"></td>
+                    <td th:text="${#temporals.format(shift.workDate, 'yyyy/MM/dd')}"></td>
                     <td th:text="${shift.staff.name}"></td>
-                    <td th:text="${shift.startTime}"></td>
-                    <td th:text="${shift.endTime}"></td>
+                    <td th:text="${#temporals.format(shift.startTime, 'HH:mm')}"></td>
+                    <td th:text="${#temporals.format(shift.endTime, 'HH:mm')}"></td>
                     <td th:text="${shift.note}"></td>
+                    <td class="text-center">
+                        <a class="btn btn-sm btn-outline-primary"
+                           th:href="@{'/shifts/{id}/edit(id=${shift.id})}">編集</a>
+                    </td>
                 </tr>
                 </tbody>
             </table>

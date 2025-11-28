@@ -13,9 +13,11 @@
 
 <div class="container py-4">
 
-    <div class="mb-3">
-        <h1 class="h3">シフト登録</h1>
-        <a th:href="@{/shifts}" class="link-secondary small">&laquo; 一覧に戻る</a>
+    <div class="mb-3 d-flex justify-content-between align-items-center">
+        <div>
+            <h1 class="h3 mb-1">シフト登録</h1>
+            <a th:href="@{/shifts}" class="link-secondary small">&laquo; 一覧に戻る</a>
+        </div>
     </div>
 
     <div class="card shadow-sm">
@@ -23,6 +25,7 @@
 
             <form th:action="@{/shifts}" th:object="${shiftForm}" method="post">
 
+                <!-- シフト日 -->
                 <div class="mb-3">
                     <label class="form-label">シフト日</label>
                     <input type="date" th:field="*{workDate}" class="form-control" />
@@ -31,19 +34,21 @@
                          th:errors="*{workDate}"></div>
                 </div>
 
+                <!-- 担当者 -->
                 <div class="mb-3">
                     <label class="form-label">担当者</label>
                     <select th:field="*{staffId}" class="form-select">
                         <option value="">-- 選択してください --</option>
-                        <option th:each="m : ${members}"
-                                th:value="${m.id}"
-                                th:text="${m.name}"></option>
+                        <option th:each="s : ${staff}"
+                                th:value="${s.id}"
+                                th:text="${s.name}"></option>
                     </select>
                     <div class="text-danger small"
                          th:if="${#fields.hasErrors('staffId')}"
                          th:errors="*{staffId}"></div>
                 </div>
 
+                <!-- 開始時間 -->
                 <div class="mb-3">
                     <label class="form-label">開始時間</label>
                     <input type="time" th:field="*{startTime}" class="form-control" />
@@ -52,6 +57,7 @@
                          th:errors="*{startTime}"></div>
                 </div>
 
+                <!-- 終了時間 -->
                 <div class="mb-3">
                     <label class="form-label">終了時間</label>
                     <input type="time" th:field="*{endTime}" class="form-control" />
@@ -60,29 +66,15 @@
                          th:errors="*{endTime}"></div>
                 </div>
 
+                <!-- 備考 -->
                 <div class="mb-3">
-                    <label class="form-label">状態</label>
-                    <select th:field="*{status}" class="form-select">
-                        <option value="">-- 選択してください --</option>
-                        <option th:each="s : ${statuses}"
-                                th:value="${s}"
-                                th:text="${s}"></option>
-                    </select>
-                    <div class="text-danger small"
-                         th:if="${#fields.hasErrors('status')}"
-                         th:errors="*{status}"></div>
-                </div>
-
-                <div class="mb-3">
-                    <label class="form-label">作業時間（h）</label>
-                    <input type="number" step="0.1" th:field="*{workHours}" class="form-control" />
-                    <div class="text-danger small"
-                         th:if="${#fields.hasErrors('workHours')}"
-                         th:errors="*{workHours}"></div>
+                    <label class="form-label">備考</label>
+                    <textarea th:field="*{note}" class="form-control" rows="3"
+                              placeholder="メモがあれば入力してください"></textarea>
                 </div>
 
                 <div class="d-flex justify-content-end gap-2">
-                    <a th:href="@{/tasks}" class="btn btn-outline-secondary">キャンセル</a>
+                    <a th:href="@{/shifts}" class="btn btn-outline-secondary">キャンセル</a>
                     <button type="submit" class="btn btn-primary">登録する</button>
                 </div>
 
