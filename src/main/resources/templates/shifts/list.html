@@ -59,6 +59,11 @@
                         <a class="btn btn-sm btn-outline-primary"
                            th:href="@{'/shifts/{id}/edit(id=${shift.id})}">編集</a>
                     </td>
+                    <td class="text-center">
+                        <a th:href="@{|/shifts/${shift.id}/edit|}" class="btn btn-sm btn-outline-primary">
+                            編集
+                        </a>
+                    </td>
                 </tr>
                 </tbody>
             </table>
