@@ -126,7 +126,15 @@ public class ShiftController {
         return "redirect:/shifts";
     }
 
-    
+    @PostMapping("/shifts/{id}/delete")
+    public String deleteShift(@PathVariable Long id) {
+        shiftRepository.findById(id)
+            .orElseThrow(() ->new IllegalArgumentException("Invalid shift ID: " + id));
 
-    
+        shiftRepository.deleteById(id);
+
+        System.out.println("** deletedShift 呼ばれたid=" + id);
+
+        return "redirect:/Shifts";  
+    }  
 }

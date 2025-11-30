@@ -23,7 +23,10 @@
     <div class="card shadow-sm">
         <div class="card-body">
 
-            <form th:action="@{/shifts}" th:object="${shiftForm}" method="post">
+            <form th:action="@{/shifts/{id}/edit(id=${shiftForm.id})}"
+                    th:object="${shiftForm}" method="post">
+
+            <input type="hidden" th:field="*{id}" />
 
                 <!-- シフト日 -->
                 <div class="mb-3">
