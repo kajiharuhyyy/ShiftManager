@@ -135,6 +135,6 @@ public class ShiftController {
 
         System.out.println("** deletedShift 呼ばれたid=" + id);
 
-        return "redirect:/Shifts";  
+        return "redirect:/shifts";  
     }  
 }
