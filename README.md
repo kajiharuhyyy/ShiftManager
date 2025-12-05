@@ -1,4 +1,4 @@
-# TaskManager　— タスク管理ミニアプリ
+# ShiftManager— シフト管理ミニアプリ
 ![Java](https://img.shields.io/badge/Java-17-orange)
 ![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.5.8-brightgreen)
 ![Thymeleaf](https://img.shields.io/badge/Thymeleaf-3.1.2-blue)
@@ -11,13 +11,13 @@
 
 ## はじめに
 ShiftManager は、社内メンバー向けのシンプルなタスク管理アプリです。
-タスクの登録・編集・一覧表示ができ、担当者(メンバー)と紐付けて管理できます。
+シフトの登録・編集・一覧表示ができ、担当者(Staff)と紐付けて管理できます。
 
 Spring Boot + Thymeleaf + H2 Database の構成で動作する学習用 Web アプリです。
 
-チャットGPTに上司としてを投げてもらい作成しました。
+チャットGPTに上司として依頼メールを投げてもらい、それをもとに作成しました。
 
-## 上司からのメール
+## 上司からの依頼メール
 
 ```bash
 件名：シフト管理アプリ試作のお願い
@@ -92,7 +92,7 @@ Spring Boot + Thymeleaf + H2 Database の構成で動作する学習用 Web ア�
 
 ```bash
 git clone https://github.com/yourname/ShiftManager.git
-cd TaskManager
+cd ShiftManager
 ```
 
 
@@ -114,7 +114,7 @@ http://localhost:8080/shifts
 - Spring MVC（Controller / Form / View）の一連の流れ
 - CRUD 実装の基礎
 - Bean Validation による入力チェック
-- 多対一リレーション（Task → Member）
+- 多対一リレーション（Shift → Staff）
 - H2 データ初期化（schema.sql / data.sql）
 - Thymeleaf のフォームバインディング理解
 
@@ -123,8 +123,8 @@ http://localhost:8080/shifts
 ## 今後の拡張予定
 
 - ログイン・認可機能（Spring Security）
-- シフト検索（担当者 / ステータス）
-- 勤務時間レポート
+- シフト検索（スタッフ・期間など）
+- 月ごとの勤務時間レポート
 - API 化（React フロント版）
 - デプロイ（Render / Railway / AWS）
 
